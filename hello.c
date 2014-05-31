@@ -4,7 +4,7 @@
 int main()
 {
 	for (int i = 0; i < 10; i++){
-	    printf("hello world\n");
+	    printf("I double push\n");
 	}
 	
 	return 0;
