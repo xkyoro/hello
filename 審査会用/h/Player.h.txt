@@ -5,11 +5,11 @@
 #include "GameMain.h"
 #include "OBJECT.h"
 
-class PLAYER :public COBJECT
+class PLAYER :public COBJECT	//:public COBJECT は継承なのでclass PLAYERで使いたい変数や関数がclass COBJECTにあるのかをちゃんと確認。
 {
 public:
-	PLAYER();
-	~PLAYER(){}
+	PLAYER();		//コンストラクタ（初期化）
+	~PLAYER(){}		//デストラクタ（メモリの破棄）
 
 	Texture b;
 
