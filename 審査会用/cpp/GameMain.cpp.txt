@@ -1,0 +1,33 @@
+#include "lib\appEnv.hpp"
+#include "GameMain.h"
+#include "OBJECT.h"
+#include "Player.h"
+#include "main.h"
+
+GameMain *GM;
+
+GameMain::GameMain()// : Blues("res/29x29blues.png")
+{
+	Player.reset(new PLAYER());
+}
+
+void GameMain::Update()
+{
+	Player->Update();
+}
+
+void GameMain::Draw()
+{
+	//
+	app_env->setupDraw();
+	//Player->Draw();
+
+	//
+	app_env->update();
+}
+
+void GameMain::Main()
+{
+	Update();
+	Draw();
+}
