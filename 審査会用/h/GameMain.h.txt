@@ -8,7 +8,7 @@
 class GameMain :public COBJECT
 {
 public:
-	GameMain();
+	GameMain(){}
 	~GameMain(){}
 
 	//Texture Blues;
