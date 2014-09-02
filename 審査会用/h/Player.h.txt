@@ -5,10 +5,11 @@
 #include "GameMain.h"
 #include "OBJECT.h"
 
+
 class PLAYER :public COBJECT
 {
 public:
-	PLAYER();
+	PLAYER(){}
 	~PLAYER(){}
 
 	Texture b;
