@@ -7,7 +7,7 @@
 #include "main.h"
 
 
-PLAYER::PLAYER() :b("res/29x29blues.png")
+PLAYER::PLAYER() :b("res/29x29blues.png")	//:b ã“ã‚Œã¯ä½•ï¼Ÿ
 {
 	float x = 0.0f;
 	float y = 10.0f;
@@ -26,19 +26,19 @@ PLAYER::PLAYER() :b("res/29x29blues.png")
 
 	int pressT = 0;
 
-	float press = 0.0f;		//ƒWƒƒƒ“ƒvƒ{ƒ^ƒ“‚ğ‰Ÿ‚µ‚Ä‚éŠÔ•Ï”
-	float press2 = 0.0f;		//ƒ_ƒbƒVƒ…ƒ{ƒ^ƒ“‚ğ‰Ÿ‚µ‚Ä‚éŠÔ•Ï”
-	int count = 0;			//ƒAƒjƒ[ƒVƒ‡ƒ“—p
-	float action_x = 0.0;		//ƒAƒNƒVƒ‡ƒ“‚µ‚½‚Æ‚«‚ÉØ‚èæ‚èˆÊ’u‚ğ•Ï‚¦‚é•Ï”‚˜
-	float action_y = 0.0;		//ƒAƒNƒVƒ‡ƒ“‚µ‚½‚Æ‚«‚ÉØ‚èæ‚èˆÊ’u‚ğ•Ï‚¦‚é•Ï”‚™
-	bool pressD = false;		//D’·‰Ÿ‚µ
+	float press = 0.0f;		//ã‚¸ãƒ£ãƒ³ãƒ—ãƒœã‚¿ãƒ³ã‚’æŠ¼ã—ã¦ã‚‹æ™‚é–“å¤‰æ•°
+	float press2 = 0.0f;		//ãƒ€ãƒƒã‚·ãƒ¥ãƒœã‚¿ãƒ³ã‚’æŠ¼ã—ã¦ã‚‹æ™‚é–“å¤‰æ•°
+	int count = 0;			//ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³ç”¨
+	float action_x = 0.0;		//ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã—ãŸã¨ãã«åˆ‡ã‚Šå–ã‚Šä½ç½®ã‚’å¤‰ãˆã‚‹å¤‰æ•°ï½˜
+	float action_y = 0.0;		//ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã—ãŸã¨ãã«åˆ‡ã‚Šå–ã‚Šä½ç½®ã‚’å¤‰ãˆã‚‹å¤‰æ•°ï½™
+	bool pressD = false;		//Dé•·æŠ¼ã—
 
-	//ƒWƒƒƒ“ƒv’l‚©‚ç•Ï”‚ğ—pˆÓ
+	//ã‚¸ãƒ£ãƒ³ãƒ—å€¤ã‹ã‚‰å¤‰æ•°ã‚’ç”¨æ„
 	float normal = 7.0f;
 	float water = 1.0f;
 	float half = 30.0f;
 
-	//d—Í
+	//é‡åŠ›
 	const float g = -1.0f;
 	//const float gravi1 = -0.05;
 	//const float gravi2 = -2.0f;
@@ -50,31 +50,31 @@ void PLAYER::JUMP(int& c, Texture& m, float& T, float& T2, float& a_x, float& a_
 	float a = a_x;
 	float b = a_y;
 
-	//ƒWƒƒƒ“ƒv’†‚Ì
+	//ã‚¸ãƒ£ãƒ³ãƒ—ä¸­ã®æ™‚
 	if (jumping){
-		y += vy + 0.5 * g;			//—‰º
-		vy += g;						//d—Í‰ÁZ
-		//‰EŒü‚«‚Ì
+		y += vy + 0.5 * g;			//è½ä¸‹
+		vy += g;						//é‡åŠ›åŠ ç®—
+		//å³å‘ãã®æ™‚
 		if (dash_R){
 			a = 4;
 			b = 2;
 		}
-		//¶Œü‚«‚Ì
+		//å·¦å‘ãã®æ™‚
 		if (dash_L){
 			a = 1;
 			b = 5;
 		}
-		//ƒWƒƒƒ“ƒv’†‚Ì•`‰æ
+		//ã‚¸ãƒ£ãƒ³ãƒ—ä¸­ã®æç”»
 		drawTextureBox(-200 + x, -HEIGHT / 2 + y, 30 * 3, 30 * 3,
 			30 * a - 30, 30 * b - 30, 30, 30,
 			m,
 			Color(1, 1, 1));
 	}
 
-	//’…’n
+	//ç€åœ°
 	if (y <= 10.0){
 		y = 10.0f;
-		if (!pressJ){			//‰Ÿ‚µ‚Á‚Ï‚È‚µ‚É‚æ‚é˜A‘±ƒWƒƒƒ“ƒv“P‹
+		if (!pressJ){			//æŠ¼ã—ã£ã±ãªã—ã«ã‚ˆã‚‹é€£ç¶šã‚¸ãƒ£ãƒ³ãƒ—æ’¤å»
 			T = 0;
 		}
 		if (!D){
@@ -83,15 +83,15 @@ void PLAYER::JUMP(int& c, Texture& m, float& T, float& T2, float& a_x, float& a_
 		c = 0;
 		jumping = false;
 		jump_dush = false;
-		//‰E‚ğŒü‚¢‚Ä‚¢‚ÄARight‚ğ‰Ÿ‚µ‚Ä‚¢‚È‚¢‚Æ‚«
+		//å³ã‚’å‘ã„ã¦ã„ã¦ã€Rightã‚’æŠ¼ã—ã¦ã„ãªã„ã¨ã
 		if (dash_R && !pressR && !jump_dush && !D&&!dush_on){
 			a = 5;
-			if ((count / 5) % 3){			//ƒAƒjƒ[ƒVƒ‡ƒ“ˆ—
+			if ((count / 5) % 3){			//ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³å‡¦ç†
 				a += 1;
 			}
 			b = 1;
 		}
-		//¶‚ğŒü‚¢‚Ä‚¢‚ÄALeft‚ğ‰Ÿ‚µ‚Ä‚¢‚È‚¢‚Æ‚«
+		//å·¦ã‚’å‘ã„ã¦ã„ã¦ã€Leftã‚’æŠ¼ã—ã¦ã„ãªã„ã¨ã
 		if (dash_L && !pressL && !jump_dush && !D&&!dush_on){
 			a = 1;
 			if ((count / 5) % 3){
@@ -100,16 +100,16 @@ void PLAYER::JUMP(int& c, Texture& m, float& T, float& T2, float& a_x, float& a_
 			b = 4;
 		}
 		if (pressR &&!jump_dush&&!D&&!dush_on){
-			if ((count / 10) % 2){			//‰Eis
+			if ((count / 10) % 2){			//å³é€²è¡Œ
 				a -= 1;
 			}
 		}
 		if (pressL && !jump_dush&&!D&&!dush_on){
-			if ((count / 10) % 2){			//¶is
+			if ((count / 10) % 2){			//å·¦é€²è¡Œ
 				a += 1;
 			}
 		}
-		//ƒLƒƒƒ‰ƒNƒ^[•\¦
+		//ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼è¡¨ç¤º
 		drawTextureBox(-200 + x, -HEIGHT / 2 + y, 30 * 3, 30 * 3,
 			30 * a - 30, 30 * b - 30 / 1, 30, 30,
 			m,
@@ -118,7 +118,7 @@ void PLAYER::JUMP(int& c, Texture& m, float& T, float& T2, float& a_x, float& a_
 	}
 
 }
-//ƒWƒƒƒ“ƒvŠÖ”
+//ã‚¸ãƒ£ãƒ³ãƒ—é–¢æ•°
 void PLAYER::JUMPING(float& jp, bool& D){
 	vy = jp;
 	if (y > 5){
@@ -132,10 +132,10 @@ void PLAYER::JUMPING(float& jp, bool& D){
 	}
 }
 
-//ƒ_ƒbƒVƒ…
+//ãƒ€ãƒƒã‚·ãƒ¥
 void PLAYER::DUSH(bool& D){
 	if (dush_on&&D){
-		//‰EŒü‚«
+		//å³å‘ã
 		if (dash_R && !jumping){
 			jump_dush = false;
 
@@ -143,7 +143,7 @@ void PLAYER::DUSH(bool& D){
 		if (dash_R && jumping){
 			jump_dush = true;
 		}
-		//¶Œü‚«
+		//å·¦å‘ã
 		if (dash_L && !jumping){
 			jump_dush = false;
 		}
@@ -151,7 +151,7 @@ void PLAYER::DUSH(bool& D){
 			jump_dush = true;
 		}
 	}
-	//ƒWƒƒƒ“ƒv’†
+	//ã‚¸ãƒ£ãƒ³ãƒ—ä¸­
 	if (jump_dush&&jumping){
 		if (dash_L){
 			x += -vx*1.2;
@@ -172,14 +172,14 @@ void PLAYER::ACTION(){
 	else{
 		pressJ = false;
 	}
-	if (app_env->isPressKey(GLFW_KEY_SPACE) && press < 13){			//Press‚Ì‚³‚¶‰ÁŒ¸‚ÅƒWƒƒƒ“ƒv—Ê‚ª•Ï‚í‚é
+	if (app_env->isPressKey(GLFW_KEY_SPACE) && press < 13){			//Pressã®ã•ã˜åŠ æ¸›ã§ã‚¸ãƒ£ãƒ³ãƒ—é‡ãŒå¤‰ã‚ã‚‹
 		press++;
 		JUMPING(normal, pressD);
 	}
-	if (press > 0 && !app_env->isPressKey(GLFW_KEY_SPACE)){		//ƒWƒƒƒ“ƒv“ü—Í‚ğÄ“xo—ˆ‚È‚¢‚æ‚¤‚É‚·‚é
+	if (press > 0 && !app_env->isPressKey(GLFW_KEY_SPACE)){		//ã‚¸ãƒ£ãƒ³ãƒ—å…¥åŠ›ã‚’å†åº¦å‡ºæ¥ãªã„ã‚ˆã†ã«ã™ã‚‹
 		press = 30;
 	}
-	//Left‚Å¶‚É‘–‚é
+	//Leftã§å·¦ã«èµ°ã‚‹
 	if (app_env->isPressKey(GLFW_KEY_LEFT) && !pressR && !dush_on){
 		dash_L = true;
 		dash_R = false;
@@ -194,7 +194,7 @@ void PLAYER::ACTION(){
 		pressL = false;
 	}
 
-	//Right‚Å‰E‚É‘–‚é
+	//Rightã§å³ã«èµ°ã‚‹
 	if (app_env->isPressKey(GLFW_KEY_RIGHT) && !pressL && !dush_on){
 		dash_R = true;
 		dash_L = false;
@@ -208,7 +208,7 @@ void PLAYER::ACTION(){
 		pressR = false;
 	}
 
-	//¶ƒ_ƒbƒVƒ…
+	//å·¦ãƒ€ãƒƒã‚·ãƒ¥
 	if (pressL && app_env->isPressKey('D') && !pressR && press2 < 13 && !jumping){
 		press2++;
 		pressD = true;
@@ -218,7 +218,7 @@ void PLAYER::ACTION(){
 		action_y = 4;
 	}
 
-	//‰Eƒ_ƒbƒVƒ…
+	//å³ãƒ€ãƒƒã‚·ãƒ¥
 	if (pressR && app_env->isPressKey('D') && !pressL && press2 < 13 && !jumping){
 		press2++;
 		pressD = true;
@@ -228,7 +228,7 @@ void PLAYER::ACTION(){
 		action_y = 1;
 	}
 
-	//¶ƒ_ƒbƒVƒ…ƒWƒƒƒ“ƒv
+	//å·¦ãƒ€ãƒƒã‚·ãƒ¥ã‚¸ãƒ£ãƒ³ãƒ—
 	if (pressL && app_env->isPressKey('D') && !pressR &&!pressD){
 		jump_dush = true;
 		dush_on = false;
@@ -239,7 +239,7 @@ void PLAYER::ACTION(){
 
 	}
 
-	//‰Eƒ_ƒbƒVƒ…ƒWƒƒƒ“ƒv
+	//å³ãƒ€ãƒƒã‚·ãƒ¥ã‚¸ãƒ£ãƒ³ãƒ—
 	if (pressR && app_env->isPressKey('D') && !pressL &&!pressD){
 		jump_dush = true;
 		dush_on = false;
@@ -257,7 +257,7 @@ void PLAYER::ACTION(){
 }
 void PLAYER::Update()
 {
-	ACTION();
+	ACTION();					//->ã“ã‚Œã¯ã„ã‚‰ã‚“ã®ã‹
 	JUMPING(normal, pressD);
 	DUSH(pressD);
 	JUMP(pressT, b, press, press2, action_x, action_y, count, pressD);
