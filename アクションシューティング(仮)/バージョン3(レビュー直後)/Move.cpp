@@ -25,15 +25,15 @@ int PlayerMove(AppEnv& env)
 {
 	if (isLeftKey(env) && !isRightKey(env))
 	{
-		pos.L = true;
-		pos.R = false;
-		return -pos.vx;
+		player.L = true;
+		player.R = false;
+		return -player.vx;
 	}
 	if (isRightKey(env) && !isLeftKey(env))
 	{
-		pos.L = false;
-		pos.R = true;
-		return pos.vx;
+		player.L = false;
+		player.R = true;
+		return player.vx;
 	}
 	else return 0;
 }
@@ -45,32 +45,32 @@ void Jump(AppEnv& env)
 	static const float g = -0.98f;
 	
 	//ジャンプ入力
-	if (env.isPressKey(GLFW_KEY_SPACE) && !pos.jumping)
+	if (env.isPressKey(GLFW_KEY_SPACE) && !player.jumping)
 	{
-		pos.vy = pos.jump_power;
-		pos.jumping = true;
+		player.vy = player.jump_power;
+		player.jumping = true;
 	}
 
 	//ジャンプ中の処理
-	if (pos.jumping)
+	if (player.jumping)
 	{
-		pos.jumping = true;
-		pos.y += pos.vy +0.5 * g;
-		pos.vy += g;
+		player.jumping = true;
+		player.y += player.vy +0.5 * g;
+		player.vy += g;
 	}
 	
 	//着地
-	if (pos.y <= -HEIGHT / 2)
+	if (player.y <= -HEIGHT / 2)
 	{
-		pos.jumping = false;
-		pos.y = -HEIGHT / 2;
-		pos.vy = 0.0f;
+		player.jumping = false;
+		player.y = -HEIGHT / 2;
+		player.vy = 0.0f;
 	}
 }
 
 //まとめ
 void MoveUpdate(AppEnv& env)
 {
-	pos.x += PlayerMove(env);
+	player.x += PlayerMove(env);
 	Jump(env);
 }

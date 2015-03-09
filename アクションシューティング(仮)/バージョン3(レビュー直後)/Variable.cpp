@@ -1,6 +1,6 @@
 #include "Variable.h"
 
-Pos pos;
+Player player;
 Bullet bullet[BULLET_MAX];
 Enemy enemy[ENEMY_MAX];
 Enemy enemy2[ENEMY2_MAX];
@@ -11,26 +11,26 @@ void Init()
 {
 	
 	//ÉvÉåÉCÉÑÅ[
-	pos.x = 0.0f;
-	pos.y = 0.0f;
-	pos.size_x = 20.0f;
-	pos.size_y = 40.0f;
-	pos.jump_power = 20.0f;
+	player.x = 0.0f;
+	player.y = 0.0f;
+	player.size_x = 20.0f;
+	player.size_y = 40.0f;
+	player.jump_power = 20.0f;
 
-	pos.vx = 5.0f;
-	pos.vy = 0.0f;
-	pos.hp = 20;
-	pos.atk = 2;
-	pos.def = 0;
-	pos.active = true;
-	pos.jumping = true;
-	pos.L = false;
-	pos.R = true;
+	player.vx = 5.0f;
+	player.vy = 0.0f;
+	player.hp = 20;
+	player.atk = 2;
+	player.def = 0;
+	player.active = true;
+	player.jumping = true;
+	player.L = false;
+	player.R = true;
 
 	for (int i = 0; i < BULLET_MAX; i++)
 	{
-		bullet[i].x = pos.x + pos.size_x / 2;
-		bullet[i].y = pos.y + pos.size_y * 0.6;
+		bullet[i].x = player.x + player.size_x / 2;
+		bullet[i].y = player.y + player.size_y * 0.6;
 		bullet[i].r = 5.0f;
 		bullet[i].active = false;
 		bullet[i].L = false;

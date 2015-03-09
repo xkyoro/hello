@@ -28,8 +28,8 @@ void Draw()
 	}
 
 	//ÉvÉåÉCÉÑÅ[
-	if (pos.active)
+	if (player.active)
 	{
-		drawFillBox(pos.x, pos.y, pos.size_x, pos.size_y, Color(1, 1, 1));
+		drawFillBox(player.x, player.y, player.size_x, player.size_y, Color(1, 1, 1));
 	}
 }

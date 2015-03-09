@@ -24,7 +24,7 @@ enum BULLES
 };
 
 //ƒvƒŒƒCƒ„[î•ñ
-typedef struct Player
+struct Player
 {
 	float x, y;
 	float size_x, size_y;
@@ -42,7 +42,7 @@ typedef struct Player
 
 	Color color;
 
-}Pos;
+};
 
 struct Bullet
 {
@@ -69,7 +69,7 @@ struct Enemy
 	Color color;
 };
 
-extern Pos pos;
+extern Player player;
 extern Bullet bullet[BULLET_MAX];
 extern Enemy enemy[ENEMY_MAX];
 extern Enemy enemy2[ENEMY2_MAX];

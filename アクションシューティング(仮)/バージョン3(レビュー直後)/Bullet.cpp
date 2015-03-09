@@ -31,14 +31,14 @@ void isPushBullets(AppEnv& env,int& a)
 	if (env.isPushKey(GLFW_KEY_UP) && a < BULLET_MAX)
 	{
 		bullet[a].active = true;
-		bullet[a].x = pos.x + pos.size_x / 2;
-		bullet[a].y = pos.y + pos.size_y * 0.6;
-		if (pos.L)
+		bullet[a].x = player.x + player.size_x / 2;
+		bullet[a].y = player.y + player.size_y * 0.6;
+		if (player.L)
 		{
 			bullet[a].L = true;
 			bullet[a].R = false;
 		}
-		else if (pos.R)
+		else if (player.R)
 		{
 			bullet[a].R = true;
 			bullet[a].L = false;
@@ -53,7 +53,7 @@ void DrawBullet(int& a)
 	if (bullet[a - 1].x >= WIDTH / 2 || bullet[a - 1].x <= -WIDTH / 2 || !bullet[a - 1].active)
 	{
 		bullet[a - 1].active = false;
-		bullet[a - 1].x = pos.x + pos.size_x / 2;
+		bullet[a - 1].x = player.x + player.size_x / 2;
 		if (a > 0)a--;
 	}
 
